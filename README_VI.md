@@ -5,11 +5,45 @@
 ## Chạy trên Windows
 
 1. Giải nén toàn bộ thư mục vào ổ SSD.
-2. Cài **Python 3.12 64 bit** từ python.org. Giữ thành phần **Tcl/Tk** và **Python Launcher** khi cài.
-3. Nhấp đúp **Run_Windows.bat**. Lần đầu script tạo môi trường Python riêng và tải thư viện. Những lần sau mở ứng dụng trực tiếp, không cần mạng để chuyển đổi.
+2. Dùng **CPython 3.12, 3.13 hoặc 3.14 64 bit** có sẵn, có thành phần **Tcl/Tk**. Máy đã có Python 3.14 không cần cài thêm Python 3.12.
+3. Nhấp đúp **Run_Windows.bat**. Script tìm Python 3.14 → 3.13 → 3.12 hoặc `python` trên PATH, tạo môi trường `.venv` trong thư mục dự án và tải các wheel có sẵn. Không cài Python mới, không yêu cầu quyền Administrator. Những lần sau mở ứng dụng trực tiếp, không cần mạng khi thư viện đã đầy đủ.
 4. Thêm một hoặc nhiều BLF; thêm DBC; chọn thư mục kết quả và nhấn **Bắt đầu chuyển đổi**.
 
 Nếu có nhiều bus dùng trùng ID, chọn đúng **CAN 1, CAN 2, …** trước khi thêm từng DBC. Các kênh đánh số từ **1**, trùng với số kênh lưu trong BLF. DBC gán cho một kênh cụ thể có ưu tiên cao hơn DBC gán cho “Tất cả”. DBC có ID trùng nhau trong cùng phạm vi sẽ báo lỗi để tránh giải mã nhầm.
+
+### Python 3.14, VS Code và máy công ty
+
+Mở thư mục tool bằng **File → Open Folder** trong VS Code. Mở **Terminal → New Terminal** và chạy lần lượt bằng PowerShell:
+
+```powershell
+py -3.14 --version
+py -3.14 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --only-binary=:all: -r requirements.txt
+.\.venv\Scripts\python.exe -m blf_converter
+```
+
+Nếu không có Windows Python Launcher (`py`), kiểm tra `python --version` là 3.14 rồi dùng `python -m venv .venv` thay dòng tạo môi trường. Các dòng còn lại giữ nguyên. `.venv` dùng Python đã cài trên máy, chỉ lưu thư viện riêng cho tool. Không cần chạy `Activate.ps1`, không cần thay Execution Policy hoặc cài Visual Studio Build Tools.
+
+Trong VS Code có thể chọn **Ctrl+Shift+P → Python: Select Interpreter → Enter interpreter path**, rồi chọn `.venv\Scripts\python.exe`. Khởi chạy bằng lệnh `-m blf_converter` ở trên; không chạy riêng `gui.py` vì file đó dùng import theo package.
+
+Nếu `.venv` đã tồn tại từ lần cài thất bại hoặc một Python không tương thích, đóng chương trình và terminal đang dùng nó, đổi tên thư mục thành `.venv_old`, rồi chạy lại launcher. Tool giữ nguyên môi trường cũ; không tự xóa thư mục đó. Hỗ trợ bản CPython thông thường 64 bit; bản free-threaded (`3.14t`) không nằm trong cấu hình kiểm thử.
+
+Phiên bản này dùng `asammdf==8.7.2` để tất cả phụ thuộc có wheel cho Windows/Python 3.14. Bản `8.8.27` trước đó phụ thuộc `zstd`, chưa có wheel phù hợp cho cấu hình này. Đầu ra vẫn là MDF 4.10 với timestamp gốc. Bộ chạy cài bằng `--only-binary=:all:` để không gọi bộ biên dịch C++ trên máy công ty.
+
+Nếu công ty chặn tải gói, dùng nguồn wheel được IT phê duyệt. IT có thể chuẩn bị trên một máy Windows/Python 3.14 có kết nối được phép:
+
+```powershell
+py -3.14 -m pip download --only-binary=:all: -r requirements.txt -d wheels
+```
+
+Chuyển thư mục `wheels` cùng mã nguồn đến máy đích qua cách công ty cho phép, rồi cài offline:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install --no-index --find-links .\wheels -r requirements.txt
+.\.venv\Scripts\python.exe -m blf_converter
+```
+
+Nếu bản Python công ty không có Tcl/Tk, GUI cần IT bổ sung thành phần đó; chế độ dòng lệnh vẫn dùng được. Nếu công ty không cho cài cả thư viện vào `.venv`, nhờ IT đóng gói EXE bằng `Build_Windows.bat` trên máy Windows được phép và cung cấp nguyên thư mục kết quả.
 
 **Để chuyển nhanh nhất:** chọn riêng MF4, giữ nén `0`, khối `32 MB`, đọc/ghi trên SSD cục bộ. Bật Excel khi cần bản lưu trữ. Khối `64` hoặc `128 MB` có thể giảm chi phí lặp khi máy còn nhiều RAM; đây là kích thước lô frame, **không phải giới hạn tổng RAM**. Số tín hiệu trong DBC cũng ảnh hưởng RAM và tốc độ.
 
@@ -72,7 +106,7 @@ Script build được cung cấp để chạy trên Windows; bản EXE Windows c
 
 ## Dữ liệu mẫu, kiểm thử và đo hiệu năng
 
-Cho nhà phát triển, trong Python 3.12 64 bit:
+Cho nhà phát triển, trong Python 3.12–3.14 64 bit:
 
 ```bat
 python -m pip install -e ".[dev]"

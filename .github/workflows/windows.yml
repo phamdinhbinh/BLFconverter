@@ -1,0 +1,49 @@
+name: Windows Python 3.14
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-python314:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.14 x64
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+          architecture: x64
+
+      - name: Prepare runtime with the Windows launcher
+        shell: cmd
+        run: call Run_Windows.bat --check-only
+
+      - name: Verify Python version and install test dependencies
+        shell: pwsh
+        run: |
+          .\.venv\Scripts\python.exe -c "import sys; print(sys.version); sys.exit(0 if sys.version_info[:2] == (3, 14) else 1)"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          .\.venv\Scripts\python.exe -m pip install --only-binary=:all: python-can==4.6.1 "pytest>=8,<10" "openpyxl>=3.1,<4"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Run the converter test suite
+        shell: pwsh
+        run: .\.venv\Scripts\python.exe -m pytest -q
+
+      - name: Open and close the desktop GUI
+        shell: pwsh
+        run: .\.venv\Scripts\python.exe -c "import tkinter as tk; from blf_converter.gui import ConverterApp; root = tk.Tk(); app = ConverterApp(root); root.update_idletasks(); root.update(); root.destroy(); print('Tkinter GUI smoke check passed.')"
+
+      - name: Convert the bundled CAN and CAN FD demo
+        shell: pwsh
+        run: .\.venv\Scripts\python.exe -m blf_converter examples\demo.blf --dbc CAN1=examples\demo.dbc --dbc CAN2=examples\demo.dbc --output "$env:RUNNER_TEMP\blf-converter-smoke" --format both

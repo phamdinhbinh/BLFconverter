@@ -1,0 +1,95 @@
+{
+  "target": "CPython 3.14, Windows x64 (win_amd64), normal GIL build",
+  "runtime": {
+    "numpy": "2.5.4",
+    "asammdf": "8.7.2",
+    "cantools": "45.1.0"
+  },
+  "resolution": "All runtime dependencies downloaded using --only-binary=:all:. This manifest is not an installation lock or proof of native Windows execution.",
+  "wheels": [
+    {
+      "filename": "argparse_addons-0.12.0-py3-none-any.whl",
+      "sha256": "48b70ecd719054fcb0d7e6f25a1fecc13607aac61d446e83f47d211b4ead0d61"
+    },
+    {
+      "filename": "asammdf-8.7.2-cp310-abi3-win_amd64.whl",
+      "sha256": "d88a9dc83ea998dcc85e91cd966fdc8448eec7f212d8c8b285eebad78996dbdf"
+    },
+    {
+      "filename": "attrs-26.1.0-py3-none-any.whl",
+      "sha256": "c647aa4a12dfbad9333ca4e71fe62ddc36f4e63b2d260a37a8b83d2f043ac309"
+    },
+    {
+      "filename": "bitstruct-8.23.0-cp314-cp314-win_amd64.whl",
+      "sha256": "a8954c545e9831009ed25ede935ecc0fd17b6f542d61d99493b03ce23cf7e9ba"
+    },
+    {
+      "filename": "canmatrix-1.3.2-py3-none-any.whl",
+      "sha256": "03530422a14437a63317deac526ba6b83e5a53affbe381da873e15435eed9d53"
+    },
+    {
+      "filename": "cantools-45.1.0-py3-none-any.whl",
+      "sha256": "d8f878c6a18c9b48d15a19597fd65ee3301ead484480215337f8937f7a6f44d1"
+    },
+    {
+      "filename": "click-8.5.0-py3-none-any.whl",
+      "sha256": "255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360"
+    },
+    {
+      "filename": "crccheck-1.3.1-py3-none-any.whl",
+      "sha256": "1680c9a7bb1ca4bec45fa19b8ca64319f10d2ce4eb8b0d25d51cb99a20ca0108"
+    },
+    {
+      "filename": "isal-1.8.0-cp314-cp314-win_amd64.whl",
+      "sha256": "1f4349bc7eb446977e9977d6c746e0a7b7089a34f234780c7636da525227a421"
+    },
+    {
+      "filename": "lxml-6.1.3-cp314-cp314-win_amd64.whl",
+      "sha256": "66299564c046bc7e0cc5de5106601eae907e9fa5904cd68a323380a8502f7861"
+    },
+    {
+      "filename": "lz4-4.4.5-cp314-cp314-win_amd64.whl",
+      "sha256": "92159782a4502858a21e0079d77cdcaade23e8a5d252ddf46b0652604300d7be"
+    },
+    {
+      "filename": "numexpr-2.14.2-cp314-cp314-win_amd64.whl",
+      "sha256": "ef576a1cded27ba2f3129bc3c42df452a1c498072680d560793f98b0024cd7e6"
+    },
+    {
+      "filename": "numpy-2.5.4-cp314-cp314-win_amd64.whl",
+      "sha256": "2ca144f15135b6212a5c47b1e2aeca6e412f102f95a2d5d88d8aec77eb255de3"
+    },
+    {
+      "filename": "packaging-26.3-py3-none-any.whl",
+      "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c"
+    },
+    {
+      "filename": "pandas-3.0.6-cp314-cp314-win_amd64.whl",
+      "sha256": "77ccbe5057aece6fc172b9b77f19c04335af6882bc2e10c8f3ee4e6bfb3da553"
+    },
+    {
+      "filename": "python_can-4.6.1-py3-none-any.whl",
+      "sha256": "17f95255868a95108dcfcb90565a684dad32d5a3ebb35afd14f739e18c84ff6c"
+    },
+    {
+      "filename": "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+      "sha256": "a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427"
+    },
+    {
+      "filename": "six-1.17.0-py2.py3-none-any.whl",
+      "sha256": "4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274"
+    },
+    {
+      "filename": "textparser-0.26.2-py3-none-any.whl",
+      "sha256": "e14ec4fd58d3515d897196a71f4ccf8d354f5c5c6b87910571b4d250de073c4b"
+    },
+    {
+      "filename": "typing_extensions-4.16.0-py3-none-any.whl",
+      "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"
+    },
+    {
+      "filename": "wrapt-1.17.3-cp314-cp314-win_amd64.whl",
+      "sha256": "e1a4120ae5705f673727d3253de3ed0e016f7cd78dc463db1b31e2463e1f3cf6"
+    }
+  ]
+}

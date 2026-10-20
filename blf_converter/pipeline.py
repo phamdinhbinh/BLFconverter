@@ -15,6 +15,7 @@ from types import SimpleNamespace
 import numpy as np
 from asammdf import MDF, Signal
 
+from . import __version__
 from .blf import BLFReader
 from .decoder import DBCBinding, DatabaseRegistry
 from .excel import StreamingExcelWriter
@@ -253,7 +254,7 @@ def convert_file(input_path: Path | str, output_dir: Path | str,
                 elapsed = time.perf_counter() - started
                 report_temp = work_dir / f"{stem}.report.json"
                 report = {
-                    "tool_version": "1.0.0", "input": str(source), "metadata": metadata,
+                    "tool_version": __version__, "input": str(source), "metadata": metadata,
                     "options": asdict(options), "elapsed_seconds": elapsed,
                     "timings": dict(timings), "reader_stats": stats,
                     "decoded_frames": registry.decoded_frames, "unknown_frames": registry.unknown_frames,

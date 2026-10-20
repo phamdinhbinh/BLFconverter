@@ -19,3 +19,5 @@ library-files/
 github/
 converted/
 benchmark-output/
+.venv_old/
+wheels/

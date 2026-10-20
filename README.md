@@ -5,11 +5,21 @@ Tool chạy cục bộ trên **Windows 10/11 64 bit**, chuyển **BLF + DBC → 
 ## Chạy ứng dụng
 
 1. Tải mã nguồn và giải nén, hoặc clone repository.
-2. Cài **Python 3.12 64 bit**, giữ thành phần **Tcl/Tk** và **Python Launcher**.
-3. Mở `Run_Windows.bat`. Lần đầu cần mạng để cài thư viện; chuyển đổi log sau đó chạy hoàn toàn cục bộ.
+2. Dùng **Python 3.12, 3.13 hoặc 3.14 64 bit** có sẵn, có thành phần **Tcl/Tk**. Không cần cài thêm Python 3.12 nếu máy đã có 3.14.
+3. Mở `Run_Windows.bat`. Script tự chọn Python và tạo môi trường `.venv` trong thư mục tool; lần đầu cần mạng để tải thư viện dạng wheel. Không cần quyền Administrator hoặc kích hoạt PowerShell script. Chuyển đổi log sau đó chạy cục bộ.
 4. Chọn BLF, thêm DBC và gán đúng kênh CAN, chọn thư mục kết quả rồi bắt đầu chuyển đổi.
 
 Để chuyển nhanh nhất, chọn riêng **MF4**, giữ mặc định **không nén** và dùng SSD. Excel tự chia sheet/workbook khi cần; xuất Excel có thể chiếm phần lớn thời gian xử lý. Có thể chạy `Build_Windows.bat` để đóng gói EXE trên Windows.
+
+Nếu dùng VS Code với Python 3.14, mở thư mục dự án, chọn **Terminal → New Terminal** rồi chạy:
+
+```powershell
+py -3.14 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --only-binary=:all: -r requirements.txt
+.\.venv\Scripts\python.exe -m blf_converter
+```
+
+Nếu máy không có lệnh `py`, dùng `python -m venv .venv` ở dòng đầu, sau khi kiểm tra `python --version` là 3.14. Nếu đã có `.venv` từ lần cài lỗi trước, đóng ứng dụng/terminal đang dùng môi trường đó rồi đổi tên thư mục thành `.venv_old` trước khi tạo môi trường mới. Xem thêm [hướng dẫn máy công ty và cài offline](README_VI.md#python-314-vs-code-và-máy-công-ty).
 
 ## Xử lý và kiểm thử
 

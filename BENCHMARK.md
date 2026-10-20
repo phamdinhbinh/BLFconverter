@@ -2,6 +2,8 @@
 
 Đo bằng `tools/benchmark.py` trong môi trường Linux, Python 3.12, 3 CPU logic. Đây **không phải** phép đo trên Windows, ETAS MDA 8.6 hay BLF thực tế 3 GB. Bộ dữ liệu lặp lại nên nén mạnh; không suy ra thời gian thực tế từ dung lượng BLF nén.
 
+Các số dưới đây được đo với bản 1.0.0 (`asammdf==8.8.27`). Bản 1.0.1 chuyển sang `asammdf==8.7.2` để cài được bằng wheel trên Windows/Python 3.14; xem [kiểm tra tương thích](verification/python314.md). Chạy lại benchmark trên máy đích để đo cấu hình hiện tại.
+
 | Phép đo | Dữ liệu | Thời gian |
 | --- | --- | --- |
 | Đọc bằng python-can | 1.000.000 frame | 3,581 giây |

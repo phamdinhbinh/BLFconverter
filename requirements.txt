@@ -1,4 +1,5 @@
-# Tested runtime; Python 3.12 x64 recommended on Windows 10/11.
+# CPython 3.12-3.14 x64; prebuilt Windows wheels, no C compiler required.
+# 8.7.2 avoids the zstd dependency without a Windows CPython 3.14 wheel.
 numpy==2.5.4
-asammdf==8.8.27
+asammdf==8.7.2
 cantools==45.1.0
