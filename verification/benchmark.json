@@ -1,0 +1,35 @@
+{
+  "dataset": "Synthetic mixed classic CAN / 64-byte CAN FD; two channels; mux and 64-bit values",
+  "caution": "Not a real 3 GB vehicle log. Synthetic BLF compresses strongly; throughput depends on CPU, SSD, DBC, frame mix, and Excel cell count.",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "cpu": "",
+  "logical_cpus": 3,
+  "process_peak_rss_mib": 136.89453125,
+  "peak_rss_note": "Whole-process high-water mark includes fixture generation and every stage; not isolated per-conversion RAM.",
+  "frames": 1000000,
+  "input_bytes": 10138580,
+  "readers": {
+    "python_can": {
+      "seconds": 3.580616045000056,
+      "frames_per_second": 279281.55027858744
+    },
+    "streaming": {
+      "seconds": 2.3517659939999476,
+      "frames_per_second": 425212.37340419774
+    },
+    "streaming_speedup": 1.5225222467436257
+  },
+  "mf4_only": {
+    "seconds": 2.7251490730000114,
+    "decoded_samples": 2714287,
+    "report": "/workspace/scratch/benchmark/mf4/full.report.json"
+  },
+  "mf4_and_excel": {
+    "frames": 100000,
+    "seconds": 1.199098111000012,
+    "decoded_samples": 271431,
+    "xlsx_parts": 1,
+    "report": "/workspace/scratch/benchmark/both/excel.report.json"
+  }
+}

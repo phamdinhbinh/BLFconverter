@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "blf-signal-converter"
+version = "1.0.0"
+description = "Streaming CAN/CAN FD BLF + DBC to MDF 4.10 and XLSX"
+requires-python = ">=3.11,<3.15"
+dependencies = [
+    "numpy>=2.2,<3",
+    "asammdf==8.8.27",
+    "cantools==45.1.0",
+]
+
+[project.optional-dependencies]
+dev = ["python-can==4.6.1", "pytest>=8,<10", "openpyxl>=3.1,<4"]
+build = ["pyinstaller>=6.15,<7"]
+
+[project.scripts]
+blf-convert = "blf_converter.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["blf_converter*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

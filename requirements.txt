@@ -1,0 +1,4 @@
+# Tested runtime; Python 3.12 x64 recommended on Windows 10/11.
+numpy==2.5.4
+asammdf==8.8.27
+cantools==45.1.0

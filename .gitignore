@@ -1,0 +1,21 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+build/
+dist/
+*.spec
+*.egg-info/
+artifacts/
+.coverage
+
+# Local workspaces and generated conversion output
+scratch/
+shared/
+library-files/
+.agents/
+.aws/
+.codex/
+github/
+converted/
+benchmark-output/

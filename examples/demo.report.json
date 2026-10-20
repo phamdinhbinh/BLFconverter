@@ -1,0 +1,65 @@
+{
+  "tool_version": "1.0.0",
+  "input": "/workspace/examples/demo.blf",
+  "metadata": {
+    "source_blf": "/workspace/examples/demo.blf",
+    "source_bytes": 15564,
+    "start_time": "2023-11-14T22:13:20+00:00",
+    "start_time_basis": "BLF header interpreted as UTC, consistent with python-can 4.6.1. Confirm absolute clock with the logger configuration; relative sample times are unchanged.",
+    "time_axis": "Seconds relative to BLF header start time; original sample times; no resampling",
+    "dbc": [
+      {
+        "path": "/workspace/examples/demo.dbc",
+        "channel": 1
+      },
+      {
+        "path": "/workspace/examples/demo.dbc",
+        "channel": 2
+      }
+    ],
+    "numeric_values": "Physical DBC values; enumerations kept numeric. Unscaled integers remain exact; nonidentity scale/offset uses float64 and may round large 64-bit values. Integers >15 decimal digits stored as text in XLSX."
+  },
+  "options": {
+    "chunk_mb": 32,
+    "write_mf4": true,
+    "write_excel": true,
+    "compression": 0,
+    "excel_max_cells": 8000000
+  },
+  "elapsed_seconds": 0.024178648999964025,
+  "timings": {
+    "read_seconds": 0.00275289099965903,
+    "decode_seconds": 0.0008523320000222157,
+    "mf4_stage_seconds": 0.0021672660000149335,
+    "excel_stage_seconds": 0.00553311799990297,
+    "mf4_finalize_seconds": 0.0031679109999913635,
+    "excel_finalize_seconds": 0.0031493259999706424
+  },
+  "reader_stats": {
+    "objects": 1400,
+    "total_frames": 1400,
+    "frames": 1400,
+    "fd_frames": 200
+  },
+  "decoded_frames": 1200,
+  "unknown_frames": 200,
+  "truncated_frames": 0,
+  "decoded_samples": 3800,
+  "unknown_ids": [
+    {
+      "channel": 1,
+      "id_hex": "0x700",
+      "extended": false,
+      "frames": 200
+    }
+  ],
+  "warnings": [
+    "200 frame không khớp DBC (xem report)."
+  ],
+  "mf4": "demo.mf4",
+  "excel": [
+    "demo_001.xlsx"
+  ],
+  "compatibility": "MDF 4.10 numeric channels, original timestamps. MDA 8.6 validation requires the target application.",
+  "storage_note": "Only DBC-decoded data exported; retain original BLF for raw frames and unrecognized data."
+}

@@ -1,0 +1,37 @@
+VERSION "BLF Converter synthetic validation dataset"
+
+NS_ :
+    NS_DESC_
+    CM_
+    BA_DEF_
+    BA_
+    VAL_
+    SIG_VALTYPE_
+BS_:
+BU_: ECU Logger
+
+BO_ 256 Powertrain: 8 ECU
+ SG_ Speed : 0|16@1+ (0.01,0) [0|655.35] "km/h" Logger
+ SG_ Torque : 16|16@1- (0.1,-100) [-3376.8|3176.7] "Nm" Logger
+ SG_ BigEndian : 39|16@0+ (0.25,2) [2|16385.75] "V" Logger
+ SG_ Alive : 48|8@1+ (1,0) [0|255] "" Logger
+
+BO_ 2147483904 ExtendedStatus: 8 ECU
+ SG_ BigCounter : 0|64@1+ (1,0) [0|18446744073709551615] "count" Logger
+
+BO_ 512 Multiplexed: 8 ECU
+ SG_ Selector M : 0|4@1+ (1,0) [0|15] "" Logger
+ SG_ Common : 8|8@1+ (1,0) [0|255] "" Logger
+ SG_ BranchA m1 : 16|16@1- (0.5,-20) [-16404|16363.5] "A" Logger
+ SG_ BranchB m2 : 16|16@1+ (0.25,0) [0|16383.75] "B" Logger
+
+BO_ 1024 BatteryFD: 64 ECU
+ SG_ PackVoltage : 0|16@1+ (0.01,0) [0|655.35] "V" Logger
+ SG_ CellTemp : 16|16@1- (0.1,-40) [-3316.8|3236.7] "degC" Logger
+ SG_ FloatFD : 32|32@1+ (1,0) [-1e20|1e20] "ratio" Logger
+ SG_ EnergyAtTail : 448|64@1+ (1,0) [0|18446744073709551615] "Wh" Logger
+
+SIG_VALTYPE_ 1024 FloatFD : 1;
+CM_ BO_ 1024 "64-byte CAN FD payload, including a tail 64-bit counter.";
+CM_ SG_ 256 Speed "Synthetic physical speed.";
+VAL_ 512 Selector 1 "Branch A" 2 "Branch B";
